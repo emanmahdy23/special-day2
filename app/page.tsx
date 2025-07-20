@@ -103,7 +103,7 @@ export default function Page() {
       text: "احتفال الحناء",
       dates: "20250819T180000/20250819T230000",
       details: "احتفال حناء خاص - غير مناسب للأطفال دون 12 عامًا",
-      location: "رفح، قطاع غزة",
+      location: "مدخل قرية اللقية شارع 31",
     }
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.text)}&dates=${event.dates}&details=${encodeURIComponent(event.details)}&location=${encodeURIComponent(event.location)}`
     window.open(googleCalendarUrl, "_blank")
@@ -112,8 +112,13 @@ export default function Page() {
   const openGoogleForm = () => {
     // Replace this URL with your actual Google Form URL
     const googleFormUrl =
-      "https://docs.google.com/forms/d/e/1FAIpQLSc7xIFPaFRXanYuB9uveevFV9bve70Qmg0W8dWpZSCXYCxSXQ/viewform?usp=sf_link"
+      "https://docs.google.com/forms/d/e/1FAIpQLSeG2mc0vQqMfEwzGhHQ-5Iur-9GlKgkR6TG_l9TfmLb6B-l0Q/viewform"
     window.open(googleFormUrl, "_blank")
+  }
+
+  const openMap = () => {
+    const mapUrl = "https://maps.app.goo.gl/ZFsKDswqPqCDFhDG8" // هذا هو رابط خرائط جوجل المباشر
+    window.open(mapUrl, "_blank")
   }
 
   return (
@@ -139,16 +144,19 @@ export default function Page() {
       <nav className="bg-white/95 backdrop-blur-sm border-b border-stone-200 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-serif text-stone-800">Our Special Day</div>
+            <div className="text-2xl font-serif text-stone-800">دعوه لحفلة حناء</div>{" "}
             <div className="hidden md:flex space-x-8 text-stone-600">
-              <a href="#details" className="hover:text-stone-800 transition-colors">
-                التفاصيل
+              <a href="#child-policy" className="hover:text-stone-800 transition-colors group">
+                <span className="group-hover:scale-105 transition-transform inline-block">ملاحظة هامة</span>
               </a>
-              <a href="#location" className="hover:text-stone-800 transition-colors">
-                الموقع
+              <a href="#details" className="hover:text-stone-800 transition-colors group">
+                <span className="group-hover:scale-105 transition-transform inline-block">التفاصيل</span>
               </a>
-              <a href="#rsvp" className="hover:text-stone-800 transition-colors">
-                تأكيد الحضور
+              <a href="#location" className="hover:text-stone-800 transition-colors group">
+                <span className="group-hover:scale-105 transition-transform inline-block">الموقع</span>
+              </a>
+              <a href="#rsvp" className="hover:text-stone-800 transition-colors group">
+                <span className="group-hover:scale-105 transition-transform inline-block">تأكيد الحضور</span>
               </a>
             </div>
           </div>
@@ -158,53 +166,108 @@ export default function Page() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         {/* Background Image with Better Visibility */}
-        <div className="absolute inset-0 bg-[url('/images/hero-background.jpg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-[url('/images/spacial-day.png')] bg-cover bg-center"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-great-vibes text-white mb-4 leading-tight drop-shadow-lg">
-              A Timeless Union
-            </h1>
-            <p className="text-xl md:text-2xl font-great-vibes text-white/90 font-light mb-8 max-w-2xl mx-auto drop-shadow-md">
-              A special celebration of beautiful traditions in an atmosphere of joy and happiness
-            </p>
+            <h1 className="text-5xl md:text-7xl font-great-vibes text-orange-200 mb-4 leading-tight drop-shadow-lg animate-fadeInUp">
+              حنون <Heart className="inline-block w-12 h-12 mx-4 text-white drop-shadow-lg" /> رواد
+            </h1>{" "}
+            <p
+              className="text-xl md:text-2xl font-great-vibes text-white/90 font-light mb-8 max-w-2xl mx-auto drop-shadow-md animate-fadeInUp"
+              style={{ animationDelay: "0.2s" }}
+            >
+              نحتفل بالحب والمودة في ليلة لا تُنسى، حيث تتجلى أجمل التقاليد في جو من الفرح والسعادة.
+            </p>{" "}
           </div>
 
           {/* Countdown Timer */}
+          <p
+            className="text-2xl md:text-3xl font-serif text-white mb-4 drop-shadow-md animate-fadeInUp"
+            style={{ animationDelay: "0.3s" }}
+          >
+            ...تبقى على حفل الحناء
+          </p>
           <div className="grid grid-cols-4 gap-4 max-w-md mx-auto mb-12">
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg">
+            <div
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg animate-fadeInUp"
+              style={{ animationDelay: "0.4s" }}
+            >
               <div className="text-3xl font-bold text-stone-800">{timeLeft.days}</div>
               <div className="text-sm text-stone-600 font-light">أيام</div>
             </div>
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg">
+            <div
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg animate-fadeInUp"
+              style={{ animationDelay: "0.5s" }}
+            >
               <div className="text-3xl font-bold text-stone-800">{timeLeft.hours}</div>
               <div className="text-sm text-stone-600 font-light">ساعات</div>
             </div>
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg">
+            <div
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg animate-fadeInUp"
+              style={{ animationDelay: "0.6s" }}
+            >
               <div className="text-3xl font-bold text-stone-800">{timeLeft.minutes}</div>
               <div className="text-sm text-stone-600 font-light">دقائق</div>
             </div>
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg">
+            <div
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-4 border border-stone-200 shadow-lg animate-fadeInUp"
+              style={{ animationDelay: "0.7s" }}
+            >
               <div className="text-3xl font-bold text-stone-800">{timeLeft.seconds}</div>
               <div className="text-sm text-stone-600 font-light">ثواني</div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp"
+            style={{ animationDelay: "0.8s" }}
+          >
             <button
               onClick={addToCalendar}
-              className="bg-white/95 backdrop-blur-sm text-stone-800 px-8 py-4 rounded-full font-medium hover:bg-white transition-all duration-300 flex items-center justify-center group shadow-lg border border-stone-200"
+              className="bg-white/95 backdrop-blur-sm text-stone-800 px-8 py-4 rounded-full font-medium hover:bg-white transition-all duration-300 flex items-center justify-center group shadow-lg border border-stone-200 transform hover:scale-[1.02]"
             >
               <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               حفظ في التقويم
             </button>
+            <button
+              onClick={openMap}
+              className="bg-white/95 backdrop-blur-sm text-stone-800 px-8 py-4 rounded-full font-medium hover:bg-white transition-all duration-300 flex items-center justify-center group shadow-lg border border-stone-200 transform hover:scale-[1.02]"
+            >
+              <MapPin className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              فتح في خرائط جوجل
+            </button>
             <a
               href="#rsvp"
-              className="border-2 border-white/90 text-white px-8 py-4 rounded-full font-medium hover:bg-white/90 hover:text-stone-800 transition-all duration-300 flex items-center justify-center group backdrop-blur-sm"
+              className="border-2 border-white/90 text-white px-8 py-4 rounded-full font-medium hover:bg-white/90 hover:text-stone-800 transition-all duration-300 flex items-center justify-center group backdrop-blur-sm transform hover:scale-[1.02]"
             >
               أكد حضورك الآن
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Child Policy Section */}
+      <section id="child-policy" className="py-20 bg-stone-50 scroll-mt-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-serif text-stone-800 mb-6">ملاحظة هامة</h2>
+              <div className="w-24 h-px bg-amber-400 mx-auto mb-6"></div>
+            </div>
+            <div className="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-8 border border-red-300 text-center card-hover animate-fadeIn">
+              <div className="flex items-center justify-center mb-6">
+                <Star className="w-8 h-8 text-red-600 mr-3" />
+                <h3 className="text-2xl font-serif text-stone-800">ملاحظة صغيرة من القلب</h3>
+              </div>
+              <div className="bg-white/80 rounded-xl p-6 border border-red-200">
+                <p className="text-lg text-stone-700 font-medium text-center mb-2">
+                  لضمان أجواء هادئة وممتعة للجميع، نرجو تفهمكم بأن هذا الاحتفال مخصص للكبار فقط (فوق 12 عامًا).
+                </p>
+                <p className="text-stone-600 text-center">شكرًا لتفهمكم، ونتطلع لمشاركتكم هذه اللحظات السعيدة!</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -225,9 +288,9 @@ export default function Page() {
                       <Calendar className="w-6 h-6 text-stone-600 group-hover:text-amber-600" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-serif text-stone-800 mb-2">التاريخ والوقت</h3>
-                      <p className="text-xl text-stone-600 mb-1">الاثنين، 19 أغسطس 2025</p>
-                      <p className="text-lg text-stone-500">6:00 مساءً</p>
+                      <h3 className="text-2xl font-serif text-stone-800 mb-2">متى وأين سنحتفل؟</h3>
+                      <p className="text-xl text-stone-600 mb-1">ننتظركم يوم الاثنين، 19 أغسطس 2025</p>
+                      <p className="text-lg text-stone-500">ابتداءً من الساعة 19:30 </p>
                     </div>
                   </div>
                 </div>
@@ -237,32 +300,43 @@ export default function Page() {
                       <MapPin className="w-6 h-6 text-stone-600 group-hover:text-amber-600" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-serif text-stone-800 mb-2">الموقع</h3>
-                      <p className="text-lg text-stone-600 mb-4">رفح، قطاع غزة</p>
+                      <h3 className="text-2xl font-serif text-stone-800 mb-2">مكان اللقاء</h3>
+                      <p className="text-lg text-stone-600 mb-4">مدخل قرية اللقية شارع 31، حيث تكتمل الفرحة بوجودكم.</p>
+                      {/* Google Map Embed */}
+                      <div className="mt-6 rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3390.7000000000005!2d34.89999999999999!3d31.200000000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDEyJzAwLjAiTiAzNMKwNTQnMDAuMCJF!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+                          width="100%"
+                          height="300"
+                          style={{ border: 0 }}
+                          allowFullScreen={true}
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                          title="موقع حفل الحناء"
+                        ></iframe>
+                      </div>
                       <a
                         href="https://maps.app.goo.gl/ZFsKDswqPqCDFhDG8"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-stone-800 hover:text-amber-600 transition-colors font-medium"
+                        className="inline-flex items-center text-stone-800 hover:text-amber-600 transition-colors font-medium mt-4"
                       >
-                        عرض على الخريطة
-                        <ExternalLink className="w-4 h-4 ml-2" />
+                        فتح في خرائط جوجل
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-100">
-                <div className="flex items-center mb-6">
-                  <Star className="w-8 h-8 text-amber-600 mr-3" />
-                  <h3 className="text-2xl font-serif text-stone-800">ملاحظة هامة</h3>
-                </div>
-                <div className="bg-white/80 rounded-xl p-6 border border-amber-200">
-                  <p className="text-lg text-stone-700 font-medium text-center mb-2">
-                    هذا الاحتفال غير مناسب للأطفال دون 12 عامًا
-                  </p>
-                  <p className="text-stone-600 text-center">نأمل تفهمكم ونتطلع لقضاء وقت رائع معكم</p>
-                </div>
+              {/* الجزء الجديد للرسالة الودية */}
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-100 text-center flex flex-col justify-center items-center card-hover animate-fadeIn">
+                <Heart className="w-12 h-12 text-amber-600 mb-6 animate-pulse" />
+                <h3 className="text-3xl font-serif text-stone-800 mb-4 leading-tight">لحظات لا تُنسى بوجودكم</h3>
+                <p className="text-xl text-stone-700 font-medium mb-4">
+                  كل لحظة في هذا اليوم الخاص ستكون أجمل بوجودكم معنا.
+                </p>
+                <p className="text-lg text-stone-600">
+                  حضوركم يضيف بهجة وسعادة لا توصف لقلوبنا. نتطلع لمشاركتكم الفرحة وصنع ذكريات تدوم للأبد!
+                </p>
               </div>
             </div>
           </div>
@@ -278,7 +352,7 @@ export default function Page() {
               <div className="w-24 h-px bg-amber-400 mx-auto mb-6"></div>
               <p className="text-lg text-stone-600">يسعدنا حضوركم لهذا الاحتفال الخاص</p>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200 text-center">
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-stone-200 text-center card-hover animate-fadeIn">
               <div className="mb-8">
                 <div className="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 border border-amber-200">
                   <Users className="w-10 h-10 text-amber-600" />
@@ -307,9 +381,9 @@ export default function Page() {
           <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <Heart className="w-8 h-8" />
           </div>
-          <h3 className="text-2xl font-serif mb-2">Our Special Day</h3>
-          <p className="text-stone-300 mb-1">19 أغسطس 2025</p>
-          <p className="text-stone-400">6:00 مساءً • رفح، قطاع غزة</p>
+          <h3 className="text-2xl font-serif mb-2">حفل حناء</h3> <p className="text-stone-300 mb-1">19 أغسطس 2025</p>
+          <p className="text-stone-400"> مدخل قرية اللقية شارع 31</p>
+          <p className="text-stone-400"> الموعد الساعه 19:30 </p>
         </div>
       </footer>
     </div>

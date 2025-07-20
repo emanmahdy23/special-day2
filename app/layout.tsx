@@ -22,8 +22,8 @@ const greatVibes = Great_Vibes({
 })
 
 export const metadata: Metadata = {
-  title: "Our Special Day", // تم التحديث إلى الإنجليزية
-  description: "A special celebration of beautiful traditions.", // تم التحديث إلى الإنجليزية
+  title: "Our Special Day - حنون & رواد", // تم التحديث ليتضمن الأسماء
+  description: "احتفال بالحب والمودة في ليلة لا تُنسى.",
     generator: 'v0.dev'
 }
 
@@ -33,10 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="ar" // لا يزال باللغة العربية
-      className={`${inter.variable} ${playfairDisplay.variable} ${greatVibes.variable}`}
-    >
+    <html lang="ar" className={`${inter.variable} ${playfairDisplay.variable} ${greatVibes.variable}`}>
       <body>{children}</body>
     </html>
   )
